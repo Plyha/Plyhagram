@@ -17,7 +17,7 @@ import static java.time.temporal.ChronoUnit.SECONDS;
 
 @Component
 public class JWTTokenProvider {
-    public static final Logger LOG = LoggerFactory.getLogger(JWTTokenProvider.class);
+    private static final Logger LOG = LoggerFactory.getLogger(JWTTokenProvider.class);
 
     public String generateToken(Authentication authentication) {
         User user = (User) authentication.getPrincipal();
