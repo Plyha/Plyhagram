@@ -3,7 +3,7 @@ package com.example.demo.service;
 import com.example.demo.dto.UserDTO;
 import com.example.demo.entity.User;
 import com.example.demo.entity.enums.EnumRole;
-import com.example.demo.exeptions.UserExistException;
+import com.example.demo.exceptions.UserExistException;
 import com.example.demo.payload.request.SignupRequest;
 import com.example.demo.repository.UserRepository;
 import org.slf4j.Logger;

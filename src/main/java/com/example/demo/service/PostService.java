@@ -4,7 +4,7 @@ import com.example.demo.dto.PostDTO;
 import com.example.demo.entity.Image;
 import com.example.demo.entity.Post;
 import com.example.demo.entity.User;
-import com.example.demo.exeptions.PostNotFoundException;
+import com.example.demo.exceptions.PostNotFoundException;
 import com.example.demo.repository.ImageRepository;
 import com.example.demo.repository.PostRepository;
 import com.example.demo.repository.UserRepository;

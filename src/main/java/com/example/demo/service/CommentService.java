@@ -4,7 +4,7 @@ import com.example.demo.dto.CommentDTO;
 import com.example.demo.entity.Comment;
 import com.example.demo.entity.Post;
 import com.example.demo.entity.User;
-import com.example.demo.exeptions.PostNotFoundException;
+import com.example.demo.exceptions.PostNotFoundException;
 import com.example.demo.repository.CommentRepository;
 import com.example.demo.repository.PostRepository;
 import com.example.demo.repository.UserRepository;
