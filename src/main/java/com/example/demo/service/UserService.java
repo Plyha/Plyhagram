@@ -2,7 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.entity.User;
 import com.example.demo.entity.enums.EnumRole;
-import com.example.demo.exeptions.UserExistExeption;
+import com.example.demo.exeptions.UserExistException;
 import com.example.demo.payload.request.SignupRequest;
 import com.example.demo.repository.UserRepository;
 import org.slf4j.Logger;
@@ -15,8 +15,8 @@ import org.springframework.stereotype.Service;
 public class UserService {
     private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
 
-    UserRepository userRepository;
-    BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final UserRepository userRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     public UserService(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
@@ -24,22 +24,21 @@ public class UserService {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    public User createUser(SignupRequest request){
+    public User createUser(SignupRequest userIn) {
         User user = new User();
-        user.setUsername(request.getUsername());
-        user.setEmail(request.getEmail());
-        user.setName(request.getFirstname());
-        user.setLastname(request.getLastname());
-        user.setPassword(bCryptPasswordEncoder.encode(request.getPassword()));
+        user.setEmail(userIn.getEmail());
+        user.setName(userIn.getFirstname());
+        user.setLastname(userIn.getLastname());
+        user.setUsername(userIn.getUsername());
+        user.setPassword(bCryptPasswordEncoder.encode(userIn.getPassword()));
         user.getRoles().add(EnumRole.ROLE_USER);
 
         try {
-            LOG.info("Saving User {}", user.getUsername());
+            LOG.info("Saving User {}", userIn.getEmail());
             return userRepository.save(user);
-
-        } catch (Exception e){
-            LOG.error("Error registration. {}", e.getMessage());
-            throw new UserExistExeption("The user " + user.getUsername() + " already exist!");
+        } catch (Exception e) {
+            LOG.error("Error during registration. {}", e.getMessage());
+            throw new UserExistException("The user " + user.getUsername() + " already exist. Please check credentials");
         }
     }
 }
