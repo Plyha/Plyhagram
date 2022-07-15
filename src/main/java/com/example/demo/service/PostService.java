@@ -46,7 +46,7 @@ public class PostService {
         return postRepository.save(post);
     }
 
-    public List<Post> getAllPost(){
+    public List<Post> getAllPosts(){
         return postRepository.findAllByOrderByCreatedDateDesc();
     }
 
@@ -61,7 +61,7 @@ public class PostService {
         return postRepository.findAllByUserOrderByCreatedDateDesc(user);
     }
 
-    public Post likedPost(Long postId, String username){
+    public Post likePost(Long postId, String username){
         Post post = postRepository.findById(postId)
             .orElseThrow(()-> new PostNotFoundException("Post cannot be found"));
 
