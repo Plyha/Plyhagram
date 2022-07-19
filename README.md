@@ -14,6 +14,7 @@ $ open http:\\localhost:8080
 ## Basic Technology Stack:
 * Spring boot
 * Spring Security with JsonWebToken for authorization
+* Maven
 * Hibernate
 * lombok
 
